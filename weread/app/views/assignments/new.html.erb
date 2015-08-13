@@ -1,0 +1,27 @@
+<div class="center">
+	<h1>Create a New Reading Assignment</h1>
+<!-- 
+Rails Bootstrap Forms
+gem 'bootstrap_form'
+https://github.com/bootstrap-ruby/rails-bootstrap-forms
+-->
+
+	<%= bootstrap_form_for(@assignment, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" ) do |f| %>
+		<p>
+			<%= f.alert_message "Please fix the errors below.", class: "errormsg" %>
+		</p>
+		<p>
+			<%= f.text_field :title %>
+		</p>
+		<p>
+			<%= f.text_area :content, rows: "10" %>
+		</p>
+		<p>
+			<%= f.datetime_select :datetime, label: "Due Date" %>
+		</p>
+		<p>
+			<%= f.submit "Create", class: "btn btn-info" %>
+			<%= link_to 'Cancel', assignments_path, class: 'btn btn-warning' %>
+		</p>
+	<% end %>
+</div>
