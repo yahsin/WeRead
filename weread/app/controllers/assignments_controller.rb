@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
 	def index
-		
+		@assignments = Assignment.all
 	end
 
 	def show
@@ -9,6 +9,10 @@ class AssignmentsController < ApplicationController
 
 	def new
 		@assignment = Assignment.new
+	end
+
+	def edit
+		@assignment = Assignment.find(params[:id])
 	end
 
 	def create
