@@ -4,7 +4,7 @@ class AssignmentsController < ApplicationController
 	end
 
 	def show
-		
+		@assignment = Assignment.find(params[:id])
 	end
 
 	def new
@@ -23,7 +23,7 @@ class AssignmentsController < ApplicationController
 
 	private
 	def assignment_params
-		params.require(:assignment).permit(:title)
+		params.require(:assignment).permit(:title, :content, :duedate)
 	end
 
 end

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813204811) do
+ActiveRecord::Schema.define(version: 20150814141526) do
 
   create_table "assignments", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "content",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.datetime "datetime"
+    t.datetime "duedate"
   end
 
 end
