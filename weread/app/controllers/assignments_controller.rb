@@ -25,6 +25,23 @@ class AssignmentsController < ApplicationController
 		end
 	end
 
+	def update
+		@assignment = Assignment.find(params[:id])
+
+		if @assignment.update(assignment_params)
+			redirect_to @assignment
+		else
+			render 'edit'
+		end
+	end
+
+  def destroy
+    @assignment = Assignment.find(params[:id])
+    @assignment.destroy
+ 
+    redirect_to assignments_path
+  end
+
 	private
 	def assignment_params
 		params.require(:assignment).permit(:title, :content, :duedate)
