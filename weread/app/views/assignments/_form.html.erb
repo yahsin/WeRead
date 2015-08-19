@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@assignment, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" ) do |f| %>
+<%= bootstrap_form_for(@assignment, :url => assignments_path, :html => { :multipart => true }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" ) do |f| %>
 	<p>
 		<%= f.alert_message "Please fix the errors below.", class: "errormsg" %>
 	</p>
@@ -9,7 +9,10 @@
 		<%= f.text_area :content, rows: "10" %>
 	</p>
 	<p>
-		<%= f.datetime_select :duedate,  ampm: true, label: "* Due Date" %>
+		<%= f.datetime_select :duedate, ampm: true, label: "* Due Date" %>
+	</p>
+	<p>
+		<%= f.file_field :attachment, class: "file", label: "Select File" %>
 	</p>
 	<p>
 		<%= f.submit "Create", class: "btn btn-info" %>
