@@ -4,6 +4,6 @@ class Assignment < ActiveRecord::Base
 	validates :duedate, presence: true
 
 	has_attached_file :attachment
-	validates_attachment_content_type :attachment, content_type: { content_type: 'application/pdf' }
+	validates_attachment_content_type :attachment, :content_type => ['application/pdf']
 end
 

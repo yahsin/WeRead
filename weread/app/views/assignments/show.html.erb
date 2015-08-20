@@ -8,6 +8,15 @@
 		<strong>Due Date</strong><br>
 		<%= @assignment.duedate.strftime("%B %d (%a), %Y, %I : %M %p %Z") %>
 	</p>
+	<p>
+		<strong>Attachment</strong><br>
+		<!-- <%= @assignment.attachment_file_name %> -->
+		<% if File.extname(@assignment.attachment_file_name.to_s) == ".pdf" %>
+		<%= link_to @assignment.attachment_file_name, @assignment.attachment.url(:original, false), :target => "_blank" %>
+		<% else %>
+		<%= "No attached file" %>
+		<% end %>
+	</p>
 </div>
 
 <div class="center">	
