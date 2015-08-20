@@ -20,7 +20,7 @@
 </div>
 
 <div class="center">	
-	<%= link_to 'Edit', edit_assignment_path(@assignment.id), class: 'btn btn-info btn-sm' %>
-	<%= link_to 'Delete', assignment_path(@assignment.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' %>
-	<%= link_to 'Back', assignments_path, class: 'btn btn-primary btn-sm' %>
+	<%= link_to 'Back', assignments_path, class: 'btn btn-primary' %>
+	<%= link_to 'Edit', edit_assignment_path(@assignment.id), class: 'btn btn-info' %>
+	<%= link_to 'Delete', assignment_path(@assignment.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
 </div>
