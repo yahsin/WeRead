@@ -42,6 +42,13 @@ class AssignmentsController < ApplicationController
     redirect_to assignments_path
   end
 
+  def remove_attachment
+  	@assignment = Assignment.find(params[:id])
+  	@assignment.attachment = nil
+  	@assignment.save
+  	render 'edit'
+  end
+
 	private
 	def assignment_params
 		params.require(:assignment).permit(:title, :content, :duedate, :attachment)
