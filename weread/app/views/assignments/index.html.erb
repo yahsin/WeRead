@@ -8,8 +8,7 @@
 		<tr>
 			<th>Assignment</th>
 			<th>Due Date</th>
-			<th></th>
-			<th></th>
+			<th class="center">Attachment</th>
 			<th></th>
 		</tr>
 
@@ -17,7 +16,17 @@
 			<tr>
 				<td><%=link_to assignment.title, assignment_path(assignment.id)   %></td>
 				<td><%= assignment.duedate.strftime("%b %d, %Y") %></td>
-	
+				<td class="center">
+					<% if assignment.attachment? %>
+						<%= link_to '', assignment.attachment.url(:original, false), :target => "_blank", class: 'glyphicon glyphicon-file' %>
+					<% else %>
+						<span class="glyphicon glyphicon-minus"></span>
+					<% end %>
+				</td>
+				<td class="center">
+					<%= link_to 'Edit', edit_assignment_path(assignment.id), class: 'btn-sm btn-info' %>
+					<%= link_to 'Delete', assignment_path(assignment.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn-sm btn-danger' %>
+				</td>
 			</tr>
 		<% end %>
 	</table>
