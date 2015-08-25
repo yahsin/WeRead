@@ -1,0 +1,32 @@
+<%= bootstrap_form_for(@assignment, :html => { :multipart => true }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" ) do |f| %>
+	<p>
+		<%= f.alert_message "Please fix the errors below.", class: "errormsg" %>
+	</p>
+	<p>
+		<%= f.text_field :title, label: "* Title" %>
+	</p>
+	<p>
+		<%= f.text_area :content, rows: "10" %>
+	</p>
+	<p>
+		<%= f.datetime_select :duedate, ampm: true, label: "* Due Date" %>
+	</p>
+	<% if @assignment.attachment? %>
+		<div class="col-sm-offset-2 col-sm-10">
+		<p>
+			Selected file is <strong><%= link_to @assignment.attachment_file_name, @assignment.attachment.url(:original, false), :target => "_blank" %></strong>.
+			<%= link_to "Remove", remove_attachment_file_path, class: "remove" %>
+		</p>
+		</div>
+	<% end %>	<p>
+		<%= f.file_field :attachment, label: "Attach File"%>
+	</p>
+
+	<div class="center">
+		<p>
+			<%= f.submit "Save", class: "btn btn-info" %>
+			<%= link_to 'Cancel', assignment_path(@assignment.id), class: 'btn btn-warning' %>
+		</p>
+	</div>
+<% end %>
+

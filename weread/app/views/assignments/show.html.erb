@@ -1,16 +1,29 @@
+<div class="center">
+	<h2><%= @assignment.title %></h2>
+</div>
+
 <div>
+	<p>
+		<strong>Content</strong><br>
+		 <%= @assignment.content %>
+	</p>
+	<p>
+		<strong>Due Date</strong><br>
+		<%= @assignment.duedate.strftime("%B %d (%a), %Y, %I : %M %p %Z") %>
+	</p>
+	<p>
+		<strong>Attached File</strong><br>
+		<!-- <%= @assignment.attachment_file_name %> -->
+		<% if File.extname(@assignment.attachment_file_name.to_s) == ".pdf" %>
+		<%= link_to @assignment.attachment_file_name, @assignment.attachment.url(:original, false), :target => "_blank" %>
+		<% else %>
+		<%= "No attached file" %>
+		<% end %>
+	</p>
+</div>
 
-
-<h2><%= @assignment.title %></h2>
-
-<p>
-	<strong>Content</strong><br>
-	<%= @assignment.content %>
-</p>
-
-<p>
-	<strong>Due Date</strong><br>
-	<%= @assignment.duedate %>
-</p>
-
+<div class="center">	
+	<%= link_to 'Back', assignments_path, class: 'btn btn-primary' %>
+	<%= link_to 'Edit', edit_assignment_path(@assignment.id), class: 'btn btn-info' %>
+	<%= link_to 'Delete', assignment_path(@assignment.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
 </div>
